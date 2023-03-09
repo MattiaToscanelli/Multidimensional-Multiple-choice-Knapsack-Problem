@@ -1,3 +1,8 @@
+## Input file
+
+The format of input files
+
+<pre>
 N M
 Q1 Q2 Q3 ... QM
 I
@@ -16,3 +21,5 @@ N classes definition follow:
   I items definition follow:
     V1 = Value of the item
     W11 .. W1M = Weight of the item for i-th resource
+
+</pre>
