@@ -10,6 +10,24 @@
 #include <csignal>
 
 
+class ratio_index
+{
+public:
+    ratio_index(double r, int i) : item_ratio{r}, index{i} {}
+
+    double item_ratio;
+    int index;
+};
+
+double computeValueWeightRatio(int value, int* weights, int nrOfResources)
+{
+    double sum = 0;
+    for(int i = 0; i < nrOfResources; i++)
+        sum += weights[i];
+    return value/sum;
+}
+
+
 char* getOption(int argc, char* argv[], const char* option)
 {
   for( int i = 0; i < argc; ++i)
@@ -56,6 +74,119 @@ int main(int argc, char *argv[]) {
     /* ******************** */
     /* Write your code here */
     /* ******************** */
+
+    /*int value = 0;
+
+    //valueWeightRatio[nrClasses][nrItems]
+    //calculate ratio for each item
+    ratio_index* valueWeightRatio[instance.nclasses][instance.nitems[0]];
+    for (int i = 0; i < instance.nclasses; i++) {
+        for (int j = 0; j < instance.nitems[i]; j++) {
+            valueWeightRatio[i][j] = new ratio_index(computeValueWeightRatio(instance.values[i][j], &instance.weights[i][j * instance.nresources], instance.nresources), j);
+        }
+    }
+
+    //sort items in each class by ratio
+    for (int i = 0; i < instance.nclasses; i++) {
+        std::sort(valueWeightRatio[i], valueWeightRatio[i] + instance.nitems[i], [](ratio_index* a, ratio_index* b) { return a->item_ratio > b->item_ratio; });
+    }
+
+    int sumOfWeightOfEachResource[instance.nresources];
+    for (int i = 0; i < instance.nresources; i++) {
+        sumOfWeightOfEachResource[i] = 0;
+    }
+
+    //calculate multiple kanpsack problem greedy
+    for (int i = 0; i < instance.nclasses; i++) {
+        for (int j = 0; j < instance.nitems[i]; j++) {
+            int index = valueWeightRatio[i][j]->index;
+            bool canBeAdded = true;
+            for (int k = 0; k < instance.nresources; k++) {
+                if (sumOfWeightOfEachResource[k] + instance.weights[i][index * instance.nresources + k] > instance.capacities[k]) {
+                    canBeAdded = false;
+                    break;
+                }
+            }
+            if (canBeAdded) {
+                instance.solution[i] = index;
+                for (int k = 0; k < instance.nresources; k++) {
+                    sumOfWeightOfEachResource[k] += instance.weights[i][index * instance.nresources + k];
+                }
+                value += instance.values[i][index];
+                break;
+            }
+        }
+    }
+
+    //print sumOfWeightOfEachResource
+    for (int i = 0; i < instance.nresources; i++) {
+        std::cout << sumOfWeightOfEachResource[i] << " ";
+    }
+
+    //print value
+    std::cout << "\nValue:" << value << "\n";*/
+
+    int value = 0;
+
+    // Calculate the value-to-weight ratio for each item
+    ratio_index* valueWeightRatio[instance.nclasses][instance.nitems[0]];
+    for (int i = 0; i < instance.nclasses; i++) {
+        for (int j = 0; j < instance.nitems[i]; j++) {
+            valueWeightRatio[i][j] = new ratio_index(computeValueWeightRatio(instance.values[i][j], &instance.weights[i][j * instance.nresources], instance.nresources), j);
+        }
+    }
+
+    // Sort items in each class by ratio
+    for (int i = 0; i < instance.nclasses; i++) {
+        std::sort(valueWeightRatio[i], valueWeightRatio[i] + instance.nitems[i], [](ratio_index* a, ratio_index* b) { return a->item_ratio > b->item_ratio; });
+    }
+
+    // Initialize the sum of weights for each resource
+    int sumOfWeightOfEachResource[instance.nresources];
+    for (int i = 0; i < instance.nresources; i++) {
+        sumOfWeightOfEachResource[i] = 0;
+    }
+
+    // Calculate the multiple knapsack problem using a greedy approach
+    for (int i = 0; i < instance.nclasses; i++) {
+        for (int j = 0; j < instance.nitems[i]; j++) {
+            int index = valueWeightRatio[i][j]->index;
+            bool canBeAdded = true;
+
+            // Check if the item can be added to the knapsack without exceeding capacity
+            // Check if the item can be added to the knapsack without exceeding capacity
+            for (int k = 0; k < instance.nresources; k++) {
+                if (sumOfWeightOfEachResource[k] + instance.weights[i][index * instance.nresources + k] > instance.capacities[k]) {
+                    canBeAdded = false;
+                    break;
+                }
+            }
+
+            // If the item can be added, update the solution and the sum of weights
+            if (canBeAdded) {
+                instance.solution[i] = index;
+                for (int k = 0; k < instance.nresources; k++) {
+                    sumOfWeightOfEachResource[k] += instance.weights[i][index * instance.nresources + k];
+                }
+                value += instance.values[i][index];
+                break;
+            }
+        }
+    }
+
+    for (int i = 0; i < instance.nresources; i++) {
+        std::cout << sumOfWeightOfEachResource[i] << " ";
+    }
+
+    //print value
+    std::cout << "\nValue:" << value << "\n";
+
+
+
+
+
+
+
 
 
     std::ofstream outfile;

@@ -1,3 +1,3 @@
-/Users/simone/OwnerFiles/6_Semester/Algo/src/greedy/cmake-build-debug/CMakeFiles/greedy.dir
-/Users/simone/OwnerFiles/6_Semester/Algo/src/greedy/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/simone/OwnerFiles/6_Semester/Algo/src/greedy/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/cmake-build-debug/CMakeFiles/greedy.dir
+/Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/cmake-build-debug/CMakeFiles/rebuild_cache.dir
