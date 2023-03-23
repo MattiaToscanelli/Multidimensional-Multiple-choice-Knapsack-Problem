@@ -1,4 +1,0 @@
-"/Users/mattiatoscanelli/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/mattiatoscanelli/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja -S /Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy -B /Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/cmake-build-debug
