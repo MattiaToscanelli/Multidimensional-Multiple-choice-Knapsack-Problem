@@ -24,7 +24,6 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/greedy.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/greedy.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/greedy" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/greedy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/data.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +64,7 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="greedy" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-t 10000 -i ../../../input/standard/mmkp_b_03.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="greedy" TARGET_NAME="greedy" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="greedy" RUN_TARGET_NAME="greedy">
+    <configuration name="greedy" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-t 10000 -i ../../../input/standard/mmkp_a_07.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="greedy" TARGET_NAME="greedy" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="greedy" RUN_TARGET_NAME="greedy">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -82,6 +81,8 @@
       <workItem from="1678357830996" duration="865000" />
       <workItem from="1679656880414" duration="335000" />
       <workItem from="1680158253735" duration="9735000" />
+      <workItem from="1680513042204" duration="524000" />
+      <workItem from="1680702206347" duration="3299000" />
     </task>
     <servers />
   </component>

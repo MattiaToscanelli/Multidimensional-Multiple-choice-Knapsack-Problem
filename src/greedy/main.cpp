@@ -8,63 +8,12 @@
 #include <cstdlib>
 #include <csignal>
 
-int findBestFit(const data& instance, const std::vector<std::vector<int>>& remaining_capacity, const std::vector<int>& item, int nclass) {
-    int bestFit = -1;
-    for (int r = 0; r < instance.nresources; r++) {
-        bool feasible = true;
-        for (int c = 0; c < instance.nclasses; c++) {
-            if (c != nclass && remaining_capacity[r][c] < instance.weights[c][item[c]]) {
-                feasible = false;
-                break;
-            }
-        }
-        if (feasible && remaining_capacity[r][nclass] >= instance.weights[nclass][item[nclass]]) {
-            if (bestFit == -1 || remaining_capacity[r][nclass] < remaining_capacity[bestFit][nclass]) {
-                bestFit = r;
-            }
-        }
-    }
-    return bestFit;
-}
-
-// Funzione che risolve il problema dello zaino multidimensionale con assegnamento simultaneo a tutti i knapsack
-void solveMultidimensionalKnapsack(data& instance) {
-    std::vector<std::vector<int>> remaining_capacity(instance.nresources, std::vector<int>(instance.nclasses, 0));
-    for (int r = 0; r < instance.nresources; r++) {
-        for (int c = 0; c < instance.nclasses; c++) {
-            remaining_capacity[r][c] = instance.capacities[r];
-        }
-    }
-    std::vector<std::pair<int, int>> items;
-    for (int c = 0; c < instance.nclasses; c++) {
-        for (int i = 0; i < instance.nitems[c]; i++) {
-            items.push_back(std::make_pair(instance.values[c][i], c * instance.nitems[c] + i));
-        }
-    }
-    sort(items.begin(), items.end(), std::greater<std::pair<int, int>>());
-    instance.solution.assign(items.size(), -1);
-    for (int k = 0; k < items.size(); k++) {
-        int item_id = items[k].second;
-        int c = item_id / instance.nitems[0];
-        int i = item_id % instance.nitems[0];
-        int r = findBestFit(instance, remaining_capacity, {c, i}, c);
-        if (r != -1) {
-            instance.solution[k] = item_id;
-            for (int c = 0; c < instance.nclasses; c++) {
-                remaining_capacity[r][c] -= instance.weights[c][i];
-            }
-        }
-    }
-}
-
-
-
-class ratio_index
+class weight_index
 {
 public:
-    ratio_index(double r, int i) : item_ratio{r}, index{i} {}
+    weight_index(double w, int i) : weight_sum{w}, index{i} {}
 
-    double item_ratio;
+    double weight_sum;
     int index;
 };
 
@@ -76,12 +25,12 @@ bool checkIfWeightIsExceeded(int* weights, std::vector<int> capacities, int nrOf
     return false;
 }
 
-double computeValueWeightRatio(int value, int* weights, int nrOfResources)
+double computeValueWeight(int* weights, int nrOfResources)
 {
     double sum = 0;
     for(int i = 0; i < nrOfResources; i++)
         sum += weights[i];
-    return value/sum;
+    return sum;
 }
 
 
@@ -99,8 +48,6 @@ inline bool exists (const std::string& name) {
 
 void signalHandler( int signum ) {
    std::cout << "Running finalizing code. Interrupt signal (" << signum << ") received.\n";
-
-
    exit(signum);  
 }
 
@@ -132,19 +79,18 @@ int main(int argc, char *argv[]) {
     /* Write your code here */
     /* ******************** */
 
-    /*int value = 0;
+    int value = 0;
 
-    // Calculate the value-to-weight ratio for each item
-    ratio_index* valueWeightRatio[instance.nclasses][instance.nitems[0]];
+    weight_index* weightSum[instance.nclasses][instance.nitems[0]];
     for (int i = 0; i < instance.nclasses; i++) {
         for (int j = 0; j < instance.nitems[i]; j++) {
-            valueWeightRatio[i][j] = new ratio_index(computeValueWeightRatio(instance.values[i][j], &instance.weights[i][j * instance.nresources], instance.nresources), j);
+            weightSum[i][j] = new weight_index(computeValueWeight(&instance.weights[i][j * instance.nresources], instance.nresources), j);
         }
     }
 
-    // Sort items in each class by ratio
+    // Sort items in each class by weight ascending
     for (int i = 0; i < instance.nclasses; i++) {
-        std::sort(valueWeightRatio[i], valueWeightRatio[i] + instance.nitems[i], [](ratio_index* a, ratio_index* b) { return a->item_ratio > b->item_ratio; });
+        std::sort(weightSum[i], weightSum[i] + instance.nitems[i], [](weight_index* a, weight_index* b) { return a->weight_sum < b->weight_sum; });
     }
 
     // Initialize the sum of weights for each resource
@@ -155,28 +101,26 @@ int main(int argc, char *argv[]) {
 
     int c = 0;
 
-
-    //fill sumOfWeightOfEachResource with the max ratio
+    // Resolve multiochoice knapsack problem take the first element with the lowest weight
     for (int i = 0; i < instance.nclasses; i++) {
-        int index = valueWeightRatio[i][0]->index;
-        instance.solution[i] = index;
-        for (int k = 0; k < instance.nresources; k++) {
-            sumOfWeightOfEachResource[k] += instance.weights[i][index * instance.nresources + k];
+        for (int j = 0; j < instance.nitems[i]; j++) {
+            if(!checkIfWeightIsExceeded(&instance.weights[i][weightSum[i][j]->index * instance.nresources], instance.capacities, instance.nresources)){
+                value += instance.values[i][weightSum[i][j]->index];
+                for (int k = 0; k < instance.nresources; k++) {
+                    sumOfWeightOfEachResource[k] += instance.weights[i][weightSum[i][j]->index * instance.nresources + k];
+                }
+                c++;
+                break;
+            }
         }
-        value += instance.values[i][index];
-        c++;
     }
 
-    //try the combinations to not exceed the capacity
-    for (int i = 0; i < instance.nclasses; i++) {
-        for (int j = 1; j < instance.nitems[i]; j++) {
-            int index = valueWeightRatio[i][j]->index;
+    //print all weights
+    for (int i = 0; i < instance.nresources; i++) {
+        std::cout << "Weight: " << sumOfWeightOfEachResource[i] << "\n";
+    }
 
-        }
-    }*/
-
-    solveMultidimensionalKnapsack(instance);
-
+    std::cout << "Value: " << value << " c:" << c << "\n";
 
 
     for (int i = 0; i < instance.nresources; i++) {
