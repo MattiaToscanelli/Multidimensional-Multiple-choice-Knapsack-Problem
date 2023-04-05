@@ -20,6 +20,8 @@ public:
     int read_output(const std::string& instance);
     int read_time(const std::string& instance);
     int verify_solution(double* val);
+
+
 };
 
 #endif
