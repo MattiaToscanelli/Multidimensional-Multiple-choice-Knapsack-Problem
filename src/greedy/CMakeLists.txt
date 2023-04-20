@@ -3,4 +3,4 @@ project(greedy)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(greedy main.cpp data.h data.cpp)
+add_executable(greedy local.cpp data.h data.cpp)

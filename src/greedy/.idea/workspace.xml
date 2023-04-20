@@ -18,12 +18,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="516066b7-e58e-42aa-9aad-2e1e4e418ee8" name="Changes" comment="/">
+      <change beforePath="$PROJECT_DIR$/../../input/standard/mmkp_a_07.txt.out" beforeDir="false" afterPath="$PROJECT_DIR$/../../input/standard/mmkp_a_07.txt.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-c443b5f642c44e46ce24.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-2458dc68075881b5ee55.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-03-23T10-12-42-0878.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-greedy-Debug-06b0fea7cd923cbb4e27.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/greedy.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/greedy.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/greedy" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/greedy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.h" beforeDir="false" afterPath="$PROJECT_DIR$/data.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +73,12 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="greedy" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-t 10000 -i ../../../input/standard/mmkp_a_07.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="greedy" TARGET_NAME="greedy" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="greedy" RUN_TARGET_NAME="greedy">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="greedy" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-t 10000 -i ../Instances/standard/mmkp_d_197.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="greedy" TARGET_NAME="greedy" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="greedy" RUN_TARGET_NAME="greedy">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -82,7 +96,9 @@
       <workItem from="1679656880414" duration="335000" />
       <workItem from="1680158253735" duration="9735000" />
       <workItem from="1680513042204" duration="524000" />
-      <workItem from="1680702206347" duration="3299000" />
+      <workItem from="1680702206347" duration="10839000" />
+      <workItem from="1680867921616" duration="1570000" />
+      <workItem from="1681973702186" duration="14657000" />
     </task>
     <servers />
   </component>
