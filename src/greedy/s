@@ -1,0 +1,339 @@
+#---------MainView---------#
+app.window.title = AppRight Console Manager
+app.started.log = AppRight Console Manager started
+
+overview.label = Overview
+authentication.label = Auth
+databases.label = Databases
+storage.label = Storage
+collections.label = Collections
+documents.label = Documents
+
+databases.button.text = Databases
+collections.button.text = Collections
+documents.button.text = Documents
+users.button.text = Users
+members.button.text = Members
+teams.button.text = Teams
+overview.button.text = Overview
+memberships.button.text = Memberships
+attributes.button.text = Attributes
+indexes.button.text = Indexes
+settings.button.text = Settings
+files.button.text = Files
+buckets.button.text = Buckets
+
+menu.file.text = File
+menu.connect.text = Connect...
+menu.refresh.text = Refresh
+menu.quit.text = Quit
+menu.info.text = Info
+menu.about.text = About AppRightManager
+
+#---------About---------#
+about.title = About AppRightManager
+about.text = AppRightManager is a desktop application that allows \nyou to manage your AppRight project.
+about.content =  Version: 1.0.0 \n\nAuthor: AppRight
+
+#---------Connection---------#
+create.connection.label = Connection
+create.connection.header = Enter project endpoint url, project ID and API Key
+create.connection.button = Connect
+create.connection.url = Endpoint URL
+create.connection.project.id = Project ID
+create.connection.api.key = API Key
+create.connection.checkbox.save = Save credentials
+create.connection.failed = Connection failed
+
+#---------Databases---------#
+create.database.button.text = + Create database
+column1.database.name = Name
+update.database.label = Update database
+update.database.text = Update name for database 
+delete.database.label = Delete database
+delete.database.header.text = Are you sure you want to delete the database 
+delete.database.undone = This action cannot be undone.
+create.database.title = Create Database
+create.database.header.text = Enter database name (required) and ID
+create.database.firstfield = Enter database name
+create.database.secondfield = Enter ID
+create.database.firstlabel = Name*
+create.database.secondlabel = ID
+
+#---------Document---------#
+create.document.button = + Create document
+document.update.permission.label = Permissions
+document.update.data.label = Data
+delete.document.label = Delete document
+delete.document.header.text = Are you sure you want to delete 
+delete.document.undone = This action cannot be undone.
+column1.document.name = Document ID
+document.label = Documents
+create.document.title = Create document
+create.document.firstlabel = Data
+create.document.data.tooltip = Set document attribute values without changing the JSON structure
+create.document.secondlabel = Permissions
+create.document.secondfield = Enter permissions
+create.document.thirdlabel = Custom ID
+create.document.thirdfield = Enter ID
+
+
+update.document.title = Update document
+update.document.data.header.text = Update document data
+update.document.data.tooltip = Update document attribute values without changing the JSON structure
+
+#---------Team---------#
+create.team.label = + Create team
+column1.team.name = Name
+column2.team.name = Members
+column3.team.name = Created
+
+table.team.members = members
+
+update.team.label = Update team
+update.team.text = Update name for team 
+delete.team.label = Delete team
+delete.team.header.text = Are you sure you want to delete the team 
+delete.team.undone = This action cannot be undone.
+create.team.title = Create Team
+create.team.header.text = Enter team name (required) and ID
+create.team.firstfield = Enter team name
+create.team.secondfield = Enter ID
+create.team.firstlabel = Name*
+create.team.secondlabel = Team ID
+
+#---------TeamMembers---------#
+create.member.label = + Create membership
+column1.member.name = Name
+column2.member.name = Roles
+column3.member.name = Joined
+
+delete.member.label = Delete member
+delete.member.header.text1 = Are you sure you want to delete '
+delete.member.header.text2 = ' from '
+delete.member.undone = This action cannot be undone.
+
+#---------Users---------#
+create.user.label = + Create user
+column1.user.name = Name
+column2.user.name = Phone
+column3.user.name = Email
+column4.user.name = Status
+column5.user.name = Joined
+
+user.title.label = Authentication
+
+table.user.verified = Verified
+table.user.unverified = Not Verified
+
+update.user.name = Update name
+update.user.email = Update Email
+update.user.phone = Update Phone
+update.user.password = Update Password
+update.user.preferences = Update Preferences
+update.user.preferences.tooltip = Preferences are defined according to the syntax: \n<key>=<value>;\n\nExample:\nkey1=value1;key2=value2; --> key1 and key2 will be the keys and value1 and value2 will be the values
+update.user.verification = Verify Account
+
+delete.user.label = Delete user
+delete.user.header.text = Are you sure you want to delete '
+delete.user.undone = This action cannot be undone.
+
+create.user.title = Create user
+create.user.name = Name
+create.user.email = Email
+create.user.phone = Phone
+create.user.password = Password
+create.user.id = User ID
+
+#---------Memberships---------#
+column1.membership.name = Team Name
+column2.membership.name = Roles
+column3.membership.name = Joined
+
+delete.membership.label = Delete member
+delete.membership.header.text1 = Are you sure you want to delete 
+delete.membership.header.text2 = ' from '
+delete.membership.undone = This action cannot be undone.
+
+create.membership.title = Create Membership
+create.membership.header.text = Enter member email (required), name and roles
+create.membership.firstfield = Enter collection name
+create.membership.secondfield = Enter ID
+create.membership.firstlabel = Name*
+create.membership.secondlabel = Collection ID
+create.membership.thirdfield = Name*
+create.membership.thirdlabel = Roles
+create.membership.tooltip = comma separated
+
+#---------Attributes---------#
+attributes.label = Attributes
+column1.attribute.name = Key
+column2.attribute.name = Required
+column3.attribute.name = Type
+column4.attribute.name = Default Value
+
+table.attribute.required = Required
+table.attribute.unrequired = '
+
+delete.attribute.label = Delete attribute
+delete.attribute.header.text1 = Are you sure you want to delete '
+delete.attribute.header.text2 = ' from '
+delete.attribute.undone = This action cannot be undone.
+
+create.attribute.title = Create attribute
+create.attribute.button = + Create attribute
+create.attribute.key = Key*
+create.attribute.array = Array
+create.attribute.required = Required
+create.attribute.default = Default
+create.attribute.elements = Elements*
+create.attribute.type = Type*
+create.attribute.size = Size*
+create.attribute.min = Min
+create.attribute.max = Max
+create.attribute.type.placeholder = Select type
+create.attribute.default.tooltip.date = Admissible formats (24h) are: \nyyyy-MM-dd HH:mm:ss.SSS, yyyy-MM-dd HH:mm:ss, yyyy-MM-dd HH:mm.\n\nE.g. "January 25th, 2018, 5:30:15 pm"  ==> 2018-01-25 17:30:15.000
+create.attribute.default.tooltip.bool = Admissible values are: true, false
+create.attribute.default.tooltip.enum = Default value must be one of the defined elements
+create.attribute.default.tooltip.ip = Default value must be a valid IP address, in the form of X.X.X.X, where X is a number between 0 and 255. \n\n E.g. 8.8.8.8
+create.attribute.default.tooltip.email = Default value must be a valid email address, in the form of xxx@yyy.zzz. \n\n E.g. john.doe@mail.com
+create.attribute.default.tooltip.url = Default value must be a valid URL, in the form of http://xxx or https://xxx \n\n E.g. http://www.website.com
+create.attribute.default.tooltip.string = Default value for the attribute
+
+#---------Indexes---------#
+create.index.button = + Create index
+
+indexes.label = Indexes
+column1.index.name = Key
+column2.index.name = Type
+column3.index.name = Attributes
+column4.index.name = ASC/DESC
+
+create.index.title = Create Index
+create.index.header.text = All field required
+create.index.firstlabel = Index Key*
+create.index.secondlabel = Index Type*
+create.index.thirdlabel = Attributes*
+create.index.thirdfield = Add attributes...
+create.index.thirdlabel.tooltip = Attributes must be in the form of <attributeKey>:<order>. \nMultiple attributes must be separated by a semi-colon. \n\nE.g.: attribute "name" ordered ascending and attribute "age" descending => "name:asc; age:desc"
+
+#---------Collections---------#
+column1.collection.name = Name
+column2.collection.name = Collection ID
+
+delete.collection.label = Delete collection
+delete.collection.header.text = Are you sure you want to delete '
+delete.collection.undone = This action cannot be undone.
+
+create.collection.title = Create Collection
+create.collection.button = + Create collection
+create.collection.header.text = Enter collection name (required) and ID
+create.collection.firstfield = Enter collection name
+create.collection.secondfield = Enter ID
+create.collection.firstlabel = Name*
+create.collection.secondlabel = Collection ID
+
+settings.collection.created = Created:
+settings.collection.last.updated = Last Updated:
+
+update.collection.name = Update name
+update.collection.permission = Update permission
+update.collection.permission.tooltip = Permissions are defined according to the syntax: \n<who>=<permission>;\n\nWho: can be a group such as any, guests, users. You can also specify just\nto a user with user:<user_id>, to a team with team:<team_id> or to a member\nwith member:<member_id>.\nPermission: c (create), r (read), u (update), d (delete). \nConcatenate the letters and form a string and separate each permission with ";".\n\nExample:\nusers=cru; --> users will have create, read and update permissions
+update.collection.enabled = Update Enabled
+update.collection.security = Update Security
+
+#---------Storage---------#
+buckets.label = Buckets
+create.bucket.label = + Create bucket
+column1.storage.name = Name
+column2.storage.name = Bucket ID
+create.file.label = + Create file
+column1.file.name = Filename
+column2.file.name = Type
+column3.file.name = Size
+column4.file.name = Created
+
+checkbox.bucket.enabled = Enabled
+checkbox.bucket.created = Created:
+checkbox.bucket.last.updated = Last Updated:
+update.name.bucket.label = Update Name
+update.permission.bucket.label = Update Permission
+update.permission.bucket.tooltip = Permissions are defined according to the syntax: \n<who>=<permission>;\n\nWho: can be a group such as any, guests, users. You can also specify just\nto a user with user:<user_id>, to a team with team:<team_id> or to a member\nwith member:<member_id>.\nPermission: c (create), r (read), u (update), d (delete). \nConcatenate the letters and form a string and separate each permission with ";".\n\nExample:\nusers=cru; --> users will have create, read and update permissions
+update.file.security.bucket.label = Update File Security
+update.file.security.bucket.checkbox = File Security
+update.security.settings.bucket.label = Update Security Settings
+update.security.settings.bucket.checkbox.encryption = Encryption
+update.security.settings.bucket.checkbox.antivirus = Antivirus
+update.compression.algorithm.bucket.label = Update Compression Algorithm
+choicebox.bucket.compression.none = none
+choicebox.bucket.compression.gzip = gzip
+
+choicebox.bucket.compression.zstd = zstd
+update.max.file.size.bucket.label = Update Maximum File Size
+update.max.file.size.value.label = Size
+update.max.file.size.type.label = Bytes
+choicebox.bucket.max.file.size.type.bytes = bytes
+choicebox.bucket.max.file.size.type.kilobytes = kilobytes
+choicebox.bucket.max.file.size.type.megabytes = megabytes
+choicebox.bucket.max.file.size.type.gigabytes = gigabytes
+update.allowed.file.types.bucket.label = Update Allowed File Extensions
+allowed.file.types.tooltip = Separate the allowed types with a ",". If you leave it blank all files will be allowed.
+
+file.list.label = File List
+delete.storage.label = Delete bucket
+delete.storage.header.text1 = Are you sure you want to delete the bucket 
+delete.storage.undone = This action cannot be undone.
+
+delete.file.label = Delete File
+delete.file.header.text1 = Are you sure you want to delete the file 
+delete.file.undone = This action cannot be undone.
+
+create.storage.title = Create Bucket
+create.storage.header.text = Enter bucket name (required) and ID
+create.storage.firstfield = Enter bucket name
+create.storage.secondfield = Enter ID
+create.storage.firstlabel = Name*
+create.storage.secondlabel = Bucket ID
+
+save.file.label = Save file
+
+update.file.label = Update file
+
+#---------UpdateForm---------#
+update.form.firstfield = Enter name
+update.form.firstlabel = Name
+
+#---------UpdatePermission---------#
+update.permission.header.text = Update permissions
+update.permission.firstfield = Enter permissions
+update.permission.firstlabel = Permissions
+
+#---------Overview---------#
+total.database.label = Databases: 
+total.bucket.label = Buckets: 
+total.user.label = Users: 
+title.overview.database = DATABASE
+title.overview.bucket = STORAGE
+title.overview.user = AUTH
+
+
+#---------CreateFile---------#
+create.file.title = Create File
+create.file.header = Create a new file
+create.file.input.file = Select file
+create.file.input.no.file = No file selected
+create.file.secondfield = Enter ID
+create.file.firstlabel = File*
+create.file.secondlabel = File ID
+create.file.thirdField = Enter permissions
+create.file.thirdlabel = Permissions
+
+#---------General---------#
+update.button.text = Update
+download.button.text = Download
+open.button.text = Open
+delete.button.text = Delete
+create.button.text = Create
+copyId.button.text = Copy ID
+update.permission.tooltip = Permissions are defined according to the syntax: \n<who>=<permission>;\n\nWho: can be a group such as any, guests, users. You can also specify just\nto a user with user:<user_id>, to a team with team:<team_id> or to a member\nwith member:<member_id>.\nPermission: r (read), u (update), d (delete). \nConcatenate the letters and form a string and separate each permission with ";".\n\nExample:\nusers=ru; --> users will have read and update permissions
+create.permission.tooltip = Permissions are defined according to the syntax: \n<who>=<permission>;\n\nWho: can be a group such as any, guests, users. You can also specify just\nto a user with user:<user_id>, to a team with team:<team_id> or to a member\nwith member:<member_id>.\nPermission: r (read), u (update), d (delete). \nConcatenate the letters and form a string and separate each permission with ";".\n\nExample:\nusers=ru; --> users will have read and update permissions

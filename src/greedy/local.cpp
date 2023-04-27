@@ -7,6 +7,9 @@
 #include <cstdlib>
 #include <csignal>
 
+std::string oututFile = "output.txt";
+data knapdata;
+
 // weight_index class to store the sum of weights for each item in each class and its index
 class weight_index {
 public:
@@ -32,21 +35,6 @@ double computeValueWeight(int* weights, int nrOfResources) {
     return sum;
 }
 
-bool* getExeededValues(int* weights, int* addedWeights, int nrOfResources, std::vector<int> originalCapacities) {
-    bool* result = new bool[nrOfResources];
-    for(int i = 0; i < nrOfResources; i++)
-        result[i] = weights[i] + addedWeights[i] > originalCapacities[i];
-    return result;
-}
-
-int getNrOfExceededValues(int* weights, int* addedWeights, int nrOfResources, std::vector<int> originalCapacities) {
-    int result = 0;
-    for(int i = 0; i < nrOfResources; i++)
-        if(weights[i] + addedWeights[i] > originalCapacities[i])
-            result++;
-    return result;
-}
-
 // function to get the value of an option passed in as a command line argument
 char* getOption(int argc, char* argv[], const char* option) {
     for( int i = 0; i < argc; ++i)
@@ -63,6 +51,13 @@ inline bool exists (const std::string& name) {
 // signal handler for interrupt signal
 void signalHandler( int signum ) {
     std::cout << "Running finalizing code. Interrupt signal (" << signum << ") received.\n";
+    // write the solution to the output file
+    std::ofstream outfile;
+    outfile.open(oututFile, std::ios_base::out);
+    for (auto i = 0; i< knapdata.nclasses; i++){
+        outfile << knapdata.solution[i] << " ";
+    }
+    outfile.close();
     exit(signum);
 }
 
@@ -89,11 +84,14 @@ int main(int argc, char *argv[]) {
     // set the output file name
     std::string output(input);
     output.append(".out");
+    oututFile = (char*)output.c_str();
     std::cout << "Output name:" << output << "\n";
 
     // read the input data
     data instance;
     instance.read_input(input);
+    instance.read_time(input);
+    knapdata = instance;
 
     // initialize the total value of the solution to 0
     int value = 0;
@@ -114,7 +112,6 @@ int main(int argc, char *argv[]) {
 
     // sort the sum of weights for each item in each class
     for (int i = 0; i < instance.nclasses; i++) {
-        //std::sort(weightSum[i], weightSum[i] + instance.nitems[i], [](weight_index* a, weight_index* b) { return a->weight_sum < b->weight_sum; });
         for (int j = 0; j < instance.nitems[i]; j++) {
             for (int k = j + 1; k < instance.nitems[i]; k++) {
                 if (weightSum[i][j]->weight_sum > weightSum[i][k]->weight_sum) {
@@ -132,14 +129,16 @@ int main(int argc, char *argv[]) {
         sumOfWeightOfEachResource[i] = 0;
     }
 
+    // initialize the remaining weight of each resource to the original capacity
     int remainingWeight[instance.nresources];
     for (int i = 0; i < instance.nresources; i++) {
         remainingWeight[i] = instance.capacities[i];
     }
 
+    // initialize the feasibility of the solution to true
     bool feasible = true;
-    int c = 0;
-    // resolve the multi-choice knapsack problem by taking the first element with the lowest weight
+
+    // resolve the multi-choice knapsack problem by taking the first element with the lowest weight (greedy approach)
     for (int i = 0; i < instance.nclasses; i++) {
         for (int j = 0; j < instance.nitems[i]; j++) {
             if(!checkIfWeightIsExceeded(&instance.weights[i][weightSum[i][j]->index * instance.nresources], sumOfWeightOfEachResource, instance.nresources, instance.capacities)) {
@@ -149,9 +148,9 @@ int main(int argc, char *argv[]) {
                     sumOfWeightOfEachResource[k] += instance.weights[i][weightSum[i][j]->index * instance.nresources + k];
                     remainingWeight[k] -= instance.weights[i][weightSum[i][j]->index * instance.nresources + k];
                 }
-                c++;
                 break;
             }
+            // if the last element is reached and the weight is exceeded, the solution is not feasible, fill the knapsack with the first element with the lowest weight
             if (j == instance.nitems[i] - 1) {
                 feasible = false;
                 //Add the first element with the lowest weight
@@ -161,13 +160,15 @@ int main(int argc, char *argv[]) {
                     sumOfWeightOfEachResource[k] += instance.weights[i][weightSum[i][0]->index * instance.nresources + k];
                     remainingWeight[k] -= instance.weights[i][weightSum[i][0]->index * instance.nresources + k];
                 }
-                c++;
             }
         }
     }
 
-    /// UPON HERE SOLUTION SHOULD BE FEASIBLE, NOW WE TRY TO MAKE IT BETTER
+
+    // initialize the changed items to true
     bool changedItems;
+
+    // start the local search
     do {
         changedItems = false;
         for (int i = 0; i < instance.nclasses; i++) {
@@ -177,8 +178,10 @@ int main(int argc, char *argv[]) {
                 remainingWeight[k] += instance.weights[i][instance.solution[i] * instance.nresources + k];
             }
             for (int j = 0; j < instance.nitems[i]; j++) {
+                //check if the item is feasible
                 if (!checkIfWeightIsExceeded(&instance.weights[i][weightSum[i][j]->index * instance.nresources],
                                              sumOfWeightOfEachResource, instance.nresources, instance.capacities)) {
+                    //check if the item is better than the actual item
                     if (instance.values[i][weightSum[i][j]->index] > instance.values[i][instance.solution[i]] || !feasible) {
                         value -= instance.values[i][instance.solution[i]];
                         value += instance.values[i][weightSum[i][j]->index];
@@ -189,9 +192,9 @@ int main(int argc, char *argv[]) {
                     }
                 }
             }
-            // if no item is feasible
-            if (!feasible) {
 
+            // if no item is feasible try to find a new item that is feasible
+            if (!feasible) {
 
                 int oldSum = INT32_MAX;
                 int sumOfNehativeWeights;
@@ -201,6 +204,7 @@ int main(int argc, char *argv[]) {
                 //select a new item that has the lowest weight for the resource with the lowest remaining weight withouth making the other remaining weights negative
                 for (int j = 0; j < instance.nitems[i]; j++) {
                     sumOfNehativeWeights = 0;
+
                     //add item to solution
                     for (int k = 0; k < instance.nresources; k++) {
                         remainingWeight[k] -= instance.weights[i][weightSum[i][j]->index * instance.nresources + k];
@@ -209,6 +213,7 @@ int main(int argc, char *argv[]) {
                         }
                     }
 
+                    //if the sum of negative weights is lower than the old sum, the item is a better fit
                     if (sumOfNehativeWeights < oldSum) {
                         oldSum = sumOfNehativeWeights;
                         bestFitIndex = j;
@@ -232,7 +237,6 @@ int main(int argc, char *argv[]) {
                 remainingWeight[k] -= instance.weights[i][instance.solution[i] * instance.nresources + k];
             }
         }
-
     } while(changedItems);
 
 
