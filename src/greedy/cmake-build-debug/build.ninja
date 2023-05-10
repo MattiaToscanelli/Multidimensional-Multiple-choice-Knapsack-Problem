@@ -46,8 +46,8 @@ cmake_ninja_workdir = /Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazion
 
 build cmake_object_order_depends_target_greedy: phony || CMakeFiles/greedy.dir
 
-build CMakeFiles/greedy.dir/local.cpp.o: CXX_COMPILER__greedy_Debug /Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/local.cpp || cmake_object_order_depends_target_greedy
-  DEP_FILE = CMakeFiles/greedy.dir/local.cpp.o.d
+build CMakeFiles/greedy.dir/meta.cpp.o: CXX_COMPILER__greedy_Debug /Users/mattiatoscanelli/Desktop/SCUOLA/terzo/ottimizzazione/Multidimensional-Multiple-choice-Knapsack-Problem/src/greedy/meta.cpp || cmake_object_order_depends_target_greedy
+  DEP_FILE = CMakeFiles/greedy.dir/meta.cpp.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.6 -std=gnu++14
   OBJECT_DIR = CMakeFiles/greedy.dir
   OBJECT_FILE_DIR = CMakeFiles/greedy.dir
@@ -66,7 +66,7 @@ build CMakeFiles/greedy.dir/data.cpp.o: CXX_COMPILER__greedy_Debug /Users/mattia
 #############################################
 # Link the executable greedy
 
-build greedy: CXX_EXECUTABLE_LINKER__greedy_Debug CMakeFiles/greedy.dir/local.cpp.o CMakeFiles/greedy.dir/data.cpp.o
+build greedy: CXX_EXECUTABLE_LINKER__greedy_Debug CMakeFiles/greedy.dir/meta.cpp.o CMakeFiles/greedy.dir/data.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.6
   OBJECT_DIR = CMakeFiles/greedy.dir
   POST_BUILD = :
